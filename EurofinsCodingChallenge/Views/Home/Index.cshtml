@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model Domain.ViewModels.DisplayNumbersModel
+
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.StartNumber, new { @Placeholder = "Enter Number", @class = "form-control" })
+            @Html.LabelFor(m => m.StartNumber)
+
+            @Html.TextBoxFor(m => m.EndNumber, new { @Placeholder = "Enter Number", @class = "form-control" })
+            @Html.LabelFor(m => m.EndNumber)
+
+            <button type="submit" id="submitForm">Submit</button>
+        }
+
+        @if (Model.NumbersToDisplay.Any())
+        {
+            foreach (var item in Model.NumbersToDisplay)
+            {
+                <p>@item</p>
+            }
+        }
+    </div>
+</div>
